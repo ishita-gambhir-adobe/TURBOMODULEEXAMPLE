@@ -9,7 +9,16 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "codegenConfig": {
+    "name": "NativeLocalStorageSpec",
+    "type": "modules",
+    "jsSrcsDir": "specs",
+    "android": {
+      "javaPackageName": "com.nativelocalstorage"
+    }
+  },
   "dependencies": {
+    "@adobe/react-native-aepcore": "^6.0.2",
     "react": "18.3.1",
     "react-native": "0.76.0"
   },
