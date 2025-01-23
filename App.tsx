@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { version } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,9 +7,10 @@ import {
   Button,
 } from 'react-native';
 
-import NativeLocalStorage from './specs/NativeLocalStorage';
+//  import NativeLocalStorage from './specs/NativeLocalStorage';
 import { MobileCore } from '@adobe/react-native-aepcore';
-import { extensionVersion } from 'nativelocalstorage';
+// import { extensionversion } from 'nativelocalstorage';
+import {multiply,extensionVersion} from 'newturbomoduletest'
 
 const EMPTY = '<empty>';
 
@@ -21,22 +22,22 @@ function App(): React.JSX.Element {
   >(null);
 
   React.useEffect(() => {
-    const storedValue = NativeLocalStorage?.getItem('myKey');
-    setValue(storedValue ?? '');
+    // const storedValue = NativeLocalStorage?.getItem('myKey');
+    // setValue(storedValue ?? '');
   }, []);
 
   function saveValue() {
-    NativeLocalStorage?.setItem(editingValue ?? EMPTY, 'myKey');
+   // NativeLocalStorage?.setItem(editingValue ?? EMPTY, 'myKey');
     setValue(editingValue);
   }
 
   function clearAll() {
-    NativeLocalStorage?.clear();
+   // NativeLocalStorage?.clear();
     setValue('');
   }
 
   function deleteValue() {
-    NativeLocalStorage?.removeItem('myKey');
+   // NativeLocalStorage?.removeItem('myKey');
     setValue('');
   }
 
@@ -46,10 +47,14 @@ function App(): React.JSX.Element {
   }
 
   const handlePlacesExtensionPress = () => {
-    extensionVersion()
-      .then(version => console.log("Places new arch library : MobileCore version: " + version))
+  const a =   multiply(2.0,3.0);
+  console.log("multiply function ", a)
   }
-
+  const handleExtensionVersionPlaces = ()=>{
+    extensionVersion().then(version=>{
+      console.log("i am in places version ", version)
+    })
+  }
   return (
     <SafeAreaView style={{flex: 1}}>
       <Text style={styles.text}>
@@ -64,7 +69,9 @@ function App(): React.JSX.Element {
       <Button title="Delete" onPress={deleteValue} />
       <Button title="Clear" onPress={clearAll} />
       <Button title="core extension version" onPress={handleCoreExtensionPress}/>
-      <Button title="places extension version" onPress={handlePlacesExtensionPress}/>
+      <Button title="Multiply " onPress={handlePlacesExtensionPress}/>
+      <Button title="Places extension version " onPress={handleExtensionVersionPlaces}/>
+
     </SafeAreaView>
   );
 }
